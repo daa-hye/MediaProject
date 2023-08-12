@@ -37,15 +37,18 @@ class ViewController: UIViewController {
             let results = movieJson["results"].arrayValue
 
             for item in results {
+
                 let id = item["id"].intValue
                 let title = item["title"].stringValue
                 let releaseDate = item["release_date"].stringValue
                 let rating = item["vote_average"].doubleValue
+                let overview = item["overview"].stringValue
                 let posterPath = item["poster_path"].stringValue
                 let backDropPath = item["backdrop_path"].stringValue
 
-                let movie = Movie(id: id, title: title, releaseDate: releaseDate, rating: rating, posterPath: posterPath, backDropPath: backDropPath)
+                let movie = Movie(id: id, title: title, releaseDate: releaseDate, rating: rating, overview: overview, posterPath: posterPath, backDropPath: backDropPath)
                 self.movieList.append(movie)
+
             }
             self.movieListTableView.reloadData()
         }
@@ -71,6 +74,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let sb = UIStoryboard(name: "MovieDetail", bundle: nil)
+        guard let vc = sb.instantiateViewController(identifier: MovieDetailViewController.identifier) as? MovieDetailViewController else { return }
+
+        vc.movie = movieList[indexPath.row]
+
+        navigationController?.pushViewController(vc, animated: true)
+
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
 
 }
 

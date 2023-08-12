@@ -20,9 +20,7 @@ class MovieAPIManager {
         let query = "?query=page=\(page)&api_key=\(APIKey.tmdb)"
         let url = EndPoint.trending.url + query
 
-        let header: HTTPHeaders = ["api_key" : APIKey.tmdb]
-
-        AF.request(url, method: .get, headers: header).validate().responseJSON { response in
+        AF.request(url, method: .get).validate().responseJSON { response in
                     switch response.result {
                     case .success(let value):
                         let json = JSON(value)
@@ -35,12 +33,10 @@ class MovieAPIManager {
 
     func callRequest(movieID: Int, completionHandler: @escaping (JSON) -> ()) {
 
-        let text = "\(movieID)/credits/api_key=\(APIKey.tmdb)"
+        let text = "\(movieID)/credits?api_key=\(APIKey.tmdb)"
         let url = EndPoint.credits.url + text
 
-        let header: HTTPHeaders = ["api_key" : APIKey.tmdb]
-
-        AF.request(url, method: .get, headers: header).validate().responseJSON { response in
+        AF.request(url, method: .get).validate().responseJSON { response in
                     switch response.result {
                     case .success(let value):
                         let json = JSON(value)

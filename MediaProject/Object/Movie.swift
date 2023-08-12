@@ -12,6 +12,7 @@ struct Movie {
     let title: String
     let releaseDate: String
     let rating: Double
+    let overview: String
     let posterPath: String
     let backDropPath: String
 }
