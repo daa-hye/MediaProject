@@ -15,20 +15,21 @@ class MovieAPIManager {
 
     private init() { }
 
-    func callRequest(page: Int, completionHandler: @escaping (JSON) -> ()) {
+    func callRequest(page: Int, completionHandler: @escaping (TrendingData) -> ()) {
 
         let query = "?query=page=\(page)&api_key=\(APIKey.tmdb)"
         let url = EndPoint.trending.url + query
 
-        AF.request(url, method: .get).validate().responseJSON { response in
-                    switch response.result {
-                    case .success(let value):
-                        let json = JSON(value)
-                        completionHandler(json)
-                    case .failure(let error):
-                        print(error)
-                    }
+        AF.request(url, method: .get).validate()
+            .responseDecodable(of: TrendingData.self, completionHandler: { response in
+                switch response.result {
+                case .success(let value):
+                    completionHandler(value)
+                case .failure(let error):
+                    print(error)
                 }
+            })
+
     }
 
     func callRequest(movieID: Int, completionHandler: @escaping (JSON) -> ()) {

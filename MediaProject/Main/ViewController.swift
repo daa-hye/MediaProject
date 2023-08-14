@@ -33,22 +33,10 @@ class ViewController: UIViewController {
 
     func getMovieList(_ page: Int) {
 
-        MovieAPIManager.shared.callRequest(page: page) { movieJson in
-            let results = movieJson["results"].arrayValue
-
-            for item in results {
-
-                let id = item["id"].intValue
-                let title = item["title"].stringValue
-                let releaseDate = item["release_date"].stringValue
-                let rating = item["vote_average"].doubleValue
-                let overview = item["overview"].stringValue
-                let posterPath = item["poster_path"].stringValue
-                let backDropPath = item["backdrop_path"].stringValue
-
-                let movie = Movie(id: id, title: title, releaseDate: releaseDate, rating: rating, overview: overview, posterPath: posterPath, backDropPath: backDropPath)
+        MovieAPIManager.shared.callRequest(page: page) { trendingData in
+            for item in trendingData.results {
+                let movie = Movie(id: item.id, title: item.title, releaseDate: item.releaseDate, rating: item.voteAverage, overview: item.overview, posterPath: item.posterPath, backDropPath: item.backdropPath)
                 self.movieList.append(movie)
-
             }
             self.movieListTableView.reloadData()
         }
@@ -57,20 +45,23 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        movieList.count
+        return movieList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier) as? MovieTableViewCell else { return UITableViewCell() }
-        cell.titleTextLabel.text = movieList[indexPath.row].title
+        let movie = movieList[indexPath.row]
 
-        if let url = URL.makeImageURL(movieList[indexPath.row].posterPath) {
+        cell.titleTextLabel.text = movie.title
+
+        if let url = URL.makeImageURL(movie.posterPath) {
             cell.posterImageView.kf.setImage(with: url)
         }
 
-        cell.ratingTextView.text = String(format: "평점 ★ %.1f점", movieList[indexPath.row].rating)
-        cell.releaseDateTextView.text = movieList[indexPath.row].releaseDate
+        cell.ratingTextView.text = String(format: "평점 ★ %.1f점", movie.rating)
+        cell.releaseDateTextView.text = movie.releaseDate
         return cell
     }
 

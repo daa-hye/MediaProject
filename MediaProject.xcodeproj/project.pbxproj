@@ -33,6 +33,7 @@
 		535DCA642A8790B0001D8299 /* Crew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535DCA632A8790B0001D8299 /* Crew.swift */; };
 		535DCA662A87B6BD001D8299 /* OverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535DCA652A87B6BD001D8299 /* OverViewTableViewCell.swift */; };
 		535DCA682A87B6F3001D8299 /* CrewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535DCA672A87B6F3001D8299 /* CrewTableViewCell.swift */; };
+		5397B3B62A8A4A5C00EBAA6E /* TrendingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5397B3B52A8A4A5C00EBAA6E /* TrendingData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		535DCA632A8790B0001D8299 /* Crew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crew.swift; sourceTree = "<group>"; };
 		535DCA652A87B6BD001D8299 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
 		535DCA672A87B6F3001D8299 /* CrewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewTableViewCell.swift; sourceTree = "<group>"; };
+		5397B3B52A8A4A5C00EBAA6E /* TrendingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				535DCA4D2A87398C001D8299 /* MovieAPIManager.swift */,
 				535DCA572A8746F5001D8299 /* ViewIdentifierProtocol.swift */,
 				535DCA552A873CF2001D8299 /* URL + Extension.swift */,
+				5397B3B52A8A4A5C00EBAA6E /* TrendingData.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				535DCA2D2A8724F6001D8299 /* ViewController.swift in Sources */,
 				535DCA662A87B6BD001D8299 /* OverViewTableViewCell.swift in Sources */,
 				535DCA292A8724F6001D8299 /* AppDelegate.swift in Sources */,
+				5397B3B62A8A4A5C00EBAA6E /* TrendingData.swift in Sources */,
 				535DCA522A873B38001D8299 /* APIKey.swift in Sources */,
 				535DCA542A873CA0001D8299 /* EndPoint.swift in Sources */,
 				535DCA5C2A877EF5001D8299 /* MovieDetailViewController.swift in Sources */,
