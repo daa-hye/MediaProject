@@ -23,7 +23,7 @@ class MovieDetailViewController: UIViewController {
 
     let sections = tableViewSection.allCases
 
-    var castList: [Cast] = []
+    var castList: [Casting] = []
     var crewList: [Crew] = []
 
     var movie: Movie?
@@ -43,30 +43,25 @@ class MovieDetailViewController: UIViewController {
 
     func getMovieDetail() {
         guard let movieID = movie?.id else { return }
-        MovieAPIManager.shared.callRequest(movieID: movieID) { creditJson in
-            let casting = Array (creditJson["cast"].arrayValue.prefix(Cast.max))
-            let crews = Array(creditJson["crew"].arrayValue.prefix(Crew.max))
-
+        MovieAPIManager.shared.callRequest(movieID: movieID) { creditData in
+            let casting = creditData.cast
+            let crews = creditData.crew
             for item in casting {
 
-                let name = item["name"].stringValue
-                let character = item["character"].stringValue
-                let profilePath = item["profile_path"].stringValue
+                let name = item.name
+                let character = item.character ?? ""
+                let profilePath = item.profilePath ?? ""
 
-                let cast = Cast(name: name, character: character, profilePath: profilePath)
+                let cast = Casting(name: name, character: character, profilePath: profilePath)
                 self.castList.append(cast)
-
             }
-
             for item in crews {
 
-                let name = item["name"].stringValue
-                let department = item["department"].stringValue
-                let job = item["job"].stringValue
-
+                let name = item.name
+                let department = item.department ?? ""
+                let job = item.job ?? ""
                 let crew = Crew(name: name, department: department, job: job)
                 self.crewList.append(crew)
-
             }
             self.creditTableView.reloadData()
         }

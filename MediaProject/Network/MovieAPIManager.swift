@@ -7,7 +7,6 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 
 class MovieAPIManager {
 
@@ -32,20 +31,19 @@ class MovieAPIManager {
 
     }
 
-    func callRequest(movieID: Int, completionHandler: @escaping (JSON) -> ()) {
+    func callRequest(movieID: Int, completionHandler: @escaping (CreditData) -> ()) {
 
         let text = "\(movieID)/credits?api_key=\(APIKey.tmdb)"
         let url = EndPoint.credits.url + text
 
-        AF.request(url, method: .get).validate().responseJSON { response in
-                    switch response.result {
-                    case .success(let value):
-                        let json = JSON(value)
-                        completionHandler(json)
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
+        AF.request(url, method: .get).validate().responseDecodable(of: CreditData.self, completionHandler: { response in
+            switch response.result {
+            case .success(let value):
+                completionHandler(value)
+            case .failure(let error):
+                print(error)
+            }
+        })
     }
 
 }
