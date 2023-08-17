@@ -6,21 +6,47 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TVSeriesViewController: UIViewController {
 
     @IBOutlet var TVSeriesCollectionView: UICollectionView!
 
     var seasonsCount = 0
+    var stils: [[String]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureCollectionView()
+        configureCollectionViewLayout()
+
+        getSeasonsCount(id: 42009)
+
     }
 
     func getSeasonsCount(id: Int) {
+
         TVAPIManager.shared.request(id: id) { count in
             self.seasonsCount = count
+
+            for i in 0..<count {
+                self.getSeasonsData(id: id, season: i)
+            }
+        }
+    }
+
+    func getSeasonsData(id: Int, season: Int) {
+
+        var stilcut: [String] = []
+
+        TVAPIManager.shared.request(id: id, season: season) { episodes in
+            guard let episodes = episodes else { return }
+            for episode in episodes {
+                stilcut.append(episode.stillPath)
+            }
+            self.stils.append(stilcut)
+            self.TVSeriesCollectionView.reloadData()
         }
     }
 
@@ -33,15 +59,24 @@ extension TVSeriesViewController : UICollectionViewDelegate, UICollectionViewDat
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        return stils.count < seasonsCount ? 0 :stils[section].count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TVSeriesCollectionViewCell.identifier, for: indexPath) as? TVSeriesCollectionViewCell else { return UICollectionViewCell() }
+        let url = URL.makeImageURL(stils[indexPath.section][indexPath.row])
+        cell.stillImageView.kf.setImage(with: url)
+        return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        <#code#>
+
+        guard kind == UICollectionView.elementKindSectionHeader, let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TVSeasonsCollectionReusableView.identifier, for: indexPath) as? TVSeasonsCollectionReusableView else { return UICollectionReusableView() }
+
+        view.seasonLabel.text = "시즌 \(indexPath.section + 1)"
+
+        return view
     }
 
 
@@ -59,11 +94,11 @@ extension TVSeriesViewController {
     func configureCollectionViewLayout() {
 
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 100, height: 100)
+        layout.itemSize = CGSize(width: 300, height: 200)
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 8
         layout.scrollDirection = .vertical
-        layout.headerReferenceSize = CGSize(width: 300, height: 50)
+        layout.headerReferenceSize = CGSize(width: 300, height: 30)
 
         TVSeriesCollectionView.collectionViewLayout = layout
     }

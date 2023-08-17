@@ -10,7 +10,7 @@ import Foundation
 // MARK: - TVSeasonsData
 struct TVSeasonsData: Codable {
     let id, airDate: String
-    let episodes: [Episode]
+    let episodes: [Episode]?
     let name, overview: String
     let ddID: Int
     let posterPath: String
@@ -39,7 +39,7 @@ struct Episode: Codable {
     let stillPath: String
     let voteAverage: Double
     let voteCount: Int
-    let crew, guestStars: [Crews]
+    let crew, guestStars: [Crews]?
 
     enum CodingKeys: String, CodingKey {
         case airDate = "air_date"
@@ -61,11 +61,11 @@ struct Episode: Codable {
 // MARK: - Crews
 struct Crews: Codable {
     let job: String?
-    let department: Department?
+    let department: String?
     let creditID: String
     let adult: Bool
     let gender, id: Int
-    let knownForDepartment: Department
+    let knownForDepartment: String
     let name, originalName: String
     let popularity: Double
     let profilePath: String?
@@ -83,16 +83,4 @@ struct Crews: Codable {
         case profilePath = "profile_path"
         case character, order
     }
-}
-
-enum Department: String, Codable {
-    case acting = "Acting"
-    case art = "Art"
-    case camera = "Camera"
-    case creator = "Creator"
-    case directing = "Directing"
-    case editing = "Editing"
-    case production = "Production"
-    case sound = "Sound"
-    case writing = "Writing"
 }

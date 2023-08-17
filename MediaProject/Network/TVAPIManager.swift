@@ -16,11 +16,12 @@ class TVAPIManager {
 
     func request(id: Int, completionHandler: @escaping (Int) -> Void) {
 
-        let url = "https://api.themoviedb.org/3/tv/\(id)"
+        let url = "https://api.themoviedb.org/3/tv/\(id)?api_key=\(APIKey.tmdb)"
 
         AF.request(url, method: .get).validate().responseDecodable(of: TVSeriesData.self, completionHandler: { response in
             switch response.result {
             case .success(let value):
+                print(value)
                 completionHandler(value.numberOfSeasons)
             case .failure(let error):
                 print(error)
@@ -28,15 +29,16 @@ class TVAPIManager {
         })
     }
 
-    func request(id: Int, season: Int, completionHandler: @escaping ([Episode]) -> Void) {
+    func request(id: Int, season: Int, completionHandler: @escaping ([Episode]?) -> Void) {
 
-        let url = "https://api.themoviedb.org/3/tv/\(id)/season/\(season)"
+        let url = "https://api.themoviedb.org/3/tv/\(id)/season/\(season)?api_key=\(APIKey.tmdb)"
 
         AF.request(url, method: .get).validate().responseDecodable(of: TVSeasonsData.self, completionHandler: { response in
             switch response.result {
             case .success(let value):
+                print(value)
                 let episodes = value.episodes
-                completionHandler(value.episodes)
+                completionHandler(value.episodes ?? nil)
             case .failure(let error):
                 print(error)
             }
