@@ -45,3 +45,24 @@ extension CrewTableViewCell: ViewIdentifierProtocol {
         return String(describing: self)
     }
 }
+
+extension TVSeriesViewController: ViewIdentifierProtocol {
+
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+
+extension TVSeriesCollectionViewCell: ViewIdentifierProtocol {
+
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+
+extension TVSeasonsCollectionReusableView: ViewIdentifierProtocol {
+
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
