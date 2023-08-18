@@ -66,3 +66,10 @@ extension TVSeasonsCollectionReusableView: ViewIdentifierProtocol {
         return String(describing: self)
     }
 }
+
+extension SimilarViewController: ViewIdentifierProtocol {
+    
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
