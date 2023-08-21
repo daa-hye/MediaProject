@@ -5,55 +5,27 @@
 //  Created by 박다혜 on 2023/08/12.
 //
 
-import Foundation
+import UIKit
 
 protocol ViewIdentifierProtocol {
     static var identifier: String { get }
 }
 
-extension MovieTableViewCell: ViewIdentifierProtocol {
+extension UIViewController: ViewIdentifierProtocol {
 
     static var identifier: String {
         return String(describing: self)
     }
 }
 
-extension MovieDetailViewController: ViewIdentifierProtocol {
+extension UITableViewCell: ViewIdentifierProtocol {
 
     static var identifier: String {
         return String(describing: self)
     }
 }
 
-extension CastTableViewCell: ViewIdentifierProtocol {
-
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
-extension OverViewTableViewCell: ViewIdentifierProtocol {
-
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
-extension CrewTableViewCell: ViewIdentifierProtocol {
-
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
-extension TVSeriesViewController: ViewIdentifierProtocol {
-
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
-extension TVSeriesCollectionViewCell: ViewIdentifierProtocol {
+extension UICollectionViewCell: ViewIdentifierProtocol {
 
     static var identifier: String {
         return String(describing: self)
@@ -62,13 +34,6 @@ extension TVSeriesCollectionViewCell: ViewIdentifierProtocol {
 
 extension TVSeasonsCollectionReusableView: ViewIdentifierProtocol {
 
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
-extension SimilarViewController: ViewIdentifierProtocol {
-    
     static var identifier: String {
         return String(describing: self)
     }

@@ -68,21 +68,26 @@ class TVAPIManager {
         let url = "https://api.themoviedb.org/3/tv/\(id)/videos?api_key=\(APIKey.tmdb)"
         var thumbnails: [String] = []
 
-        AF.request(url, method: .get).validate().responseDecodable(of: VideoData.self, completionHandler: { response in
-            switch response.result {
-            case .success(let value):
-                let results = value.results
-                for item in results {
-                    if item.site == "YouTube" {
-                        let url = "https://img.youtube.com/vi/\(item.key)/mqdefault.jpg"
-                        thumbnails.append(url)
+        AF.request(url, method: .get)
+            .validate()
+            .responseDecodable(of: VideoData.self, completionHandler: { response in
+                switch response.result {
+                case .success(let value):
+                    let results = value.results
+                    for item in results {
+                        if item.site == "YouTube" {
+                            let url = "https://img.youtube.com/vi/\(item.key)/mqdefault.jpg"
+                            thumbnails.append(url)
+                        }
                     }
+                    print("completion call")
+                    completionHandler(thumbnails)
+                case .failure(let error):
+                    print(error)
                 }
-                completionHandler(thumbnails)
-            case .failure(let error):
-                print(error)
-            }
-        })
+            })
+
+        print("requestVideo ended")
     }
 
 }

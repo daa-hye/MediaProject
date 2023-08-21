@@ -79,9 +79,9 @@ extension SimilarViewController: UICollectionViewDelegate, UICollectionViewDataS
             return videoThumbnail.count
         } else if similarSegControl.selectedSegmentIndex == Segment.similar.rawValue {
             return similarPosters.count
-        } else {
-            return 0
         }
+
+        return 0
 
     }
 

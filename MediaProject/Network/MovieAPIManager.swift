@@ -19,7 +19,8 @@ class MovieAPIManager {
         let query = "?query=page=\(page)&api_key=\(APIKey.tmdb)"
         let url = EndPoint.trending.url + query
 
-        AF.request(url, method: .get).validate()
+        AF.request(url, method: .get)
+            .validate()
             .responseDecodable(of: TrendingData.self, completionHandler: { response in
                 switch response.result {
                 case .success(let value):
@@ -36,7 +37,9 @@ class MovieAPIManager {
         let text = "\(movieID)/credits?api_key=\(APIKey.tmdb)"
         let url = EndPoint.credits.url + text
 
-        AF.request(url, method: .get).validate().responseDecodable(of: CreditData.self, completionHandler: { response in
+        AF.request(url, method: .get)
+            .validate()
+            .responseDecodable(of: CreditData.self, completionHandler: { response in
             switch response.result {
             case .success(let value):
                 completionHandler(value)

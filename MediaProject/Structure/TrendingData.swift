@@ -28,7 +28,7 @@ struct Result: Codable {
     let backdropPath, overview, originalTitle: String
     let genreIDS: [Int]
     let id, voteCount: Int
-    let originalLanguage: OriginalLanguage
+    let originalLanguage: String
     let posterPath: String
     let mediaType: MediaType
     let releaseDate: String
@@ -52,11 +52,4 @@ struct Result: Codable {
 
 enum MediaType: String, Codable {
     case movie = "movie"
-}
-
-enum OriginalLanguage: String, Codable {
-    case en = "en"
-    case hi = "hi"
-    case yo = "yo"
-    case zh = "zh"
 }
