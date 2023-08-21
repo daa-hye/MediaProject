@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="304" height="223.33333333333334"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4H-G7-t4N">
-                                <rect key="frame" x="8" y="231.33333333333334" width="42" height="21"/>
+                                <rect key="frame" x="8" y="231.33333333333334" width="41.333333333333336" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,16 +41,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19y-NB-vTo">
+                                <rect key="frame" x="61.333333333333329" y="231.33333333333334" width="41.333333333333329" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="mnh-oY-9aQ" secondAttribute="bottom" constant="32" id="21P-7I-xv9"/>
                             <constraint firstItem="EXj-U7-VF5" firstAttribute="width" secondItem="fdF-WP-gSZ" secondAttribute="width" id="2hC-Sj-sVW"/>
+                            <constraint firstItem="19y-NB-vTo" firstAttribute="leading" secondItem="m4H-G7-t4N" secondAttribute="trailing" constant="12" id="Ess-b0-iOt"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="19y-NB-vTo" secondAttribute="trailing" constant="8" id="Fvq-aT-AeV"/>
                             <constraint firstItem="m4H-G7-t4N" firstAttribute="leading" secondItem="fdF-WP-gSZ" secondAttribute="leading" constant="8" id="HeB-Bd-HCE"/>
                             <constraint firstItem="EXj-U7-VF5" firstAttribute="leading" secondItem="fdF-WP-gSZ" secondAttribute="leading" id="ObT-h8-EwZ"/>
                             <constraint firstItem="Xjy-Sm-dmE" firstAttribute="top" secondItem="m4H-G7-t4N" secondAttribute="bottom" constant="8" id="jFL-57-a49"/>
                             <constraint firstItem="m4H-G7-t4N" firstAttribute="top" secondItem="EXj-U7-VF5" secondAttribute="bottom" constant="8" id="k5M-dy-JIh"/>
                             <constraint firstAttribute="trailing" secondItem="EXj-U7-VF5" secondAttribute="trailing" id="mfp-qw-gCJ"/>
+                            <constraint firstItem="19y-NB-vTo" firstAttribute="top" secondItem="EXj-U7-VF5" secondAttribute="bottom" constant="8" id="qTk-PL-cQT"/>
                             <constraint firstItem="EXj-U7-VF5" firstAttribute="height" secondItem="fdF-WP-gSZ" secondAttribute="height" multiplier="0.7" id="qZs-5v-BUd"/>
                             <constraint firstItem="EXj-U7-VF5" firstAttribute="top" secondItem="fdF-WP-gSZ" secondAttribute="top" id="rID-cg-3Vf"/>
                             <constraint firstItem="Xjy-Sm-dmE" firstAttribute="leading" secondItem="m4H-G7-t4N" secondAttribute="leading" id="vYu-gL-u7s"/>
@@ -72,6 +81,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backView" destination="fdF-WP-gSZ" id="ohb-nW-J6n"/>
+                <outlet property="originalTitleLabel" destination="19y-NB-vTo" id="X7x-wY-Py4"/>
                 <outlet property="posterImageView" destination="EXj-U7-VF5" id="bmR-2j-AP7"/>
                 <outlet property="ratingTextView" destination="Xjy-Sm-dmE" id="E9F-cz-f5H"/>
                 <outlet property="releaseDateTextView" destination="mnh-oY-9aQ" id="e4n-B2-gaL"/>

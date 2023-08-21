@@ -12,6 +12,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet var backView: UIView!
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var titleTextLabel: UILabel!
+    @IBOutlet var originalTitleLabel: UILabel!
     @IBOutlet var ratingTextView: UILabel!
     @IBOutlet var releaseDateTextView: UILabel!
 
@@ -23,6 +24,7 @@ class MovieTableViewCell: UITableViewCell {
         backView.clipsToBounds = true
         posterImageView.contentMode = .scaleAspectFill
         titleTextLabel.font = .boldSystemFont(ofSize: 17)
+        originalTitleLabel.font = .systemFont(ofSize: 17)
         ratingTextView.font = .systemFont(ofSize: 15)
         releaseDateTextView.font = .systemFont(ofSize: 13)
         releaseDateTextView.textColor = .gray

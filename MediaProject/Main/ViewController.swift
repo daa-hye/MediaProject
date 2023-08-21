@@ -35,7 +35,7 @@ class ViewController: UIViewController {
 
         MovieAPIManager.shared.callRequest(page: page) { trendingData in
             for item in trendingData.results {
-                let movie = Movie(id: item.id, title: item.title, releaseDate: item.releaseDate, rating: item.voteAverage, overview: item.overview, posterPath: item.posterPath, backDropPath: item.backdropPath)
+                let movie = Movie(id: item.id, title: item.title, originalTitle: item.originalTitle, releaseDate: item.releaseDate, rating: item.voteAverage, overview: item.overview, posterPath: item.posterPath, backDropPath: item.backdropPath)
                 self.movieList.append(movie)
             }
             self.movieListTableView.reloadData()
@@ -55,6 +55,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let movie = movieList[indexPath.row]
 
         cell.titleTextLabel.text = movie.title
+        cell.originalTitleLabel.text = movie.originalTitle
 
         if let url = URL.makeImageURL(movie.posterPath) {
             cell.posterImageView.kf.setImage(with: url)
