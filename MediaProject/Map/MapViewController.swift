@@ -12,9 +12,17 @@ import SnapKit
 
 class MapViewController: UIViewController {
 
+    let theaterList = TheaterList().mapAnnotations
+    var annotations: [MKAnnotation] = []
+
     let locationManager = CLLocationManager()
     let mapView = MKMapView()
-
+    let selectTheaterButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.text = "영화관 선택"
+        button.backgroundColor = .darkGray
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +32,7 @@ class MapViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
 
         checkDeviceLocationAuth()
+        showAll()
 
     }
 
@@ -32,8 +41,10 @@ class MapViewController: UIViewController {
         let annotation = MKPointAnnotation()
         annotation.title = theater.location
         annotation.coordinate = CLLocationCoordinate2D(latitude: theater.latitude, longitude: theater.longitude)
+
+        annotations.append(annotation)
         mapView.addAnnotation(annotation)
-        
+
     }
 
     func setRegion(center: CLLocationCoordinate2D) {
@@ -109,30 +120,68 @@ extension MapViewController: CLLocationManagerDelegate {
 
 extension MapViewController {
 
+    func showAll() {
+
+        if !annotations.isEmpty {
+            mapView.removeAnnotations(annotations)
+        }
+
+        for theater in theaterList {
+            setAnnotation(theater: theater)
+        }
+
+    }
+
+    func showSelectedTheater(type: String) {
+
+        mapView.removeAnnotations(annotations)
+
+        for theater in theaterList {
+            guard theater.type == type else { continue }
+            setAnnotation(theater: theater)
+        }
+    }
+
+    @objc func selectTheaterButtonDidTap() {
+
+        let selectTheaterActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let mega = UIAlertAction(title: "메가박스", style: .default) { alert in
+            self.showSelectedTheater(type: alert.title!)
+        }
+        let lotte = UIAlertAction(title: "롯데시네마", style: .default) { alert in
+            self.showSelectedTheater(type: alert.title!)
+        }
+        let cgv = UIAlertAction(title: "CGV", style: .default) { alert in
+            self.showSelectedTheater(type: alert.title!)
+        }
+        let all = UIAlertAction(title: "전체보기", style: .default) { _ in
+            self.showAll()
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        selectTheaterActionSheet.addAction(mega)
+        selectTheaterActionSheet.addAction(lotte)
+        selectTheaterActionSheet.addAction(cgv)
+        selectTheaterActionSheet.addAction(all)
+        selectTheaterActionSheet.addAction(cancel)
+        present(selectTheaterActionSheet, animated: true)
+
+    }
+
     func setUI() {
 
         view.addSubview(mapView)
         mapView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(16)
         }
-    }
-    
-    struct Theater {
-        let type: String
-        let location: String
-        let latitude: Double
-        let longitude: Double
-    }
 
-    struct TheaterList {
-        var mapAnnotations: [Theater] = [
-            Theater(type: "롯데시네마", location: "롯데시네마 서울대입구", latitude: 37.4824761978647, longitude: 126.9521680487202),
-            Theater(type: "롯데시네마", location: "롯데시네마 가산디지털", latitude: 37.47947929602294, longitude: 126.88891083192269),
-            Theater(type: "메가박스", location: "메가박스 이수", latitude: 37.48581351541419, longitude:  126.98092132899579),
-            Theater(type: "메가박스", location: "메가박스 강남", latitude: 37.49948523972615, longitude: 127.02570417165666),
-            Theater(type: "CGV", location: "CGV 영등포", latitude: 37.52666023337906, longitude: 126.9258351013706),
-            Theater(type: "CGV", location: "CGV 용산 아이파크몰", latitude: 37.53149302830903, longitude: 126.9654030486416)
-        ]
+        view.addSubview(selectTheaterButton)
+        selectTheaterButton.snp.makeConstraints { make in
+            make.width.equalTo(100)
+            make.height.equalTo(30)
+            make.trailing.equalTo(view).offset(-20)
+            make.top.equalTo(view.safeAreaLayoutGuide)
+        }
+        selectTheaterButton.addTarget(self, action: #selector(selectTheaterButtonDidTap), for: .touchUpInside)
     }
 
     /*
