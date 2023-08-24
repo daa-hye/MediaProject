@@ -13,7 +13,6 @@ import SnapKit
 class MapViewController: UIViewController {
 
     let theaterList = TheaterList().mapAnnotations
-    var annotations: [MKAnnotation] = []
 
     let locationManager = CLLocationManager()
     let mapView = MKMapView()
@@ -42,7 +41,6 @@ class MapViewController: UIViewController {
         annotation.title = theater.location
         annotation.coordinate = CLLocationCoordinate2D(latitude: theater.latitude, longitude: theater.longitude)
 
-        annotations.append(annotation)
         mapView.addAnnotation(annotation)
 
     }
@@ -122,8 +120,8 @@ extension MapViewController {
 
     func showAll() {
 
-        if !annotations.isEmpty {
-            mapView.removeAnnotations(annotations)
+        if !mapView.annotations.isEmpty {
+            mapView.removeAnnotations(mapView.annotations)
         }
 
         for theater in theaterList {
@@ -134,7 +132,7 @@ extension MapViewController {
 
     func showSelectedTheater(type: String) {
 
-        mapView.removeAnnotations(annotations)
+        mapView.removeAnnotations(mapView.annotations)
 
         for theater in theaterList {
             guard theater.type == type else { continue }
