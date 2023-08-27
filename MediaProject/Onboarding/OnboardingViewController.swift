@@ -94,6 +94,8 @@ class SecondOnboardingViewController: UIViewController {
     }
 
     func setLayout() {
+        var a = [1]
+        a.append(1)
         mainLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
