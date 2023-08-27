@@ -104,6 +104,8 @@ extension MapViewController: CLLocationManagerDelegate {
         if let cordinate = locations.last?.coordinate {
             setRegion(center: cordinate)
         }
+        
+        locationManager.stopUpdatingLocation()
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -194,7 +196,7 @@ extension MapViewController {
           if let appSetting = URL(string: UIApplication.openSettingsURLString) {
               UIApplication.shared.open(appSetting)
           }
-          
+
       }
       let cancel = UIAlertAction(title: "취소", style: .default)
       requestLocationServiceAlert.addAction(cancel)
