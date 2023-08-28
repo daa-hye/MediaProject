@@ -128,10 +128,9 @@ class ThirdOnboardingViewController: UIViewController {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
 
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "Main")
-
-        sceneDelegate?.window?.rootViewController = vc
+        let vc = MovieViewController()
+        
+        sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: vc)
         sceneDelegate?.window?.makeKeyAndVisible()
     }
 
