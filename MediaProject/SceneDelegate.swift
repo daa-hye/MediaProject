@@ -22,10 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let vc = OnboardingViewController()
             window?.rootViewController = vc
         } else {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "Main")
-
-            window?.rootViewController = vc
+            let vc = MovieViewController()
+            window?.rootViewController = UINavigationController(rootViewController: vc)
         }
 
         window?.makeKeyAndVisible()

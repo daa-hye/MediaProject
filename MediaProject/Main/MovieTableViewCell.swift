@@ -7,32 +7,81 @@
 
 import UIKit
 
-class MovieTableViewCell: UITableViewCell {
+class MovieTableViewCell: BaseTableViewCell {
 
-    @IBOutlet var backView: UIView!
-    @IBOutlet var posterImageView: UIImageView!
-    @IBOutlet var titleTextLabel: UILabel!
-    @IBOutlet var originalTitleLabel: UILabel!
-    @IBOutlet var ratingTextView: UILabel!
-    @IBOutlet var releaseDateTextView: UILabel!
+    let backView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = 20
+        view.clipsToBounds = true
+        return view
+    }()
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    let posterImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
+        return view
+    }()
 
-        backView.backgroundColor = .clear
-        backView.layer.cornerRadius = 20
-        backView.clipsToBounds = true
-        posterImageView.contentMode = .scaleAspectFill
-        titleTextLabel.font = .boldSystemFont(ofSize: 17)
-        originalTitleLabel.font = .systemFont(ofSize: 17)
-        ratingTextView.font = .systemFont(ofSize: 15)
-        releaseDateTextView.font = .systemFont(ofSize: 13)
-        releaseDateTextView.textColor = .gray
+    let titleTextLabel = {
+        let view = UILabel()
+        view.font = .boldSystemFont(ofSize: 17)
+        return view
+    }()
+
+    let originalTitleLabel = {
+        let view = UILabel()
+        view.font = .systemFont(ofSize: 17)
+        return view
+    }()
+
+    let ratingTextView = {
+        let view = UILabel()
+        view.font = .systemFont(ofSize: 15)
+        return view
+    }()
+
+    let releaseDateTextView = {
+        let view = UILabel()
+        view.font = .systemFont(ofSize: 13)
+        view.textColor = .gray
+        return view
+    }()
+
+    override func configureView() {
+        contentView.addSubview(backView)
+        backView.addSubview(posterImageView)
+        backView.addSubview(titleTextLabel)
+        backView.addSubview(originalTitleLabel)
+        backView.addSubview(ratingTextView)
+        backView.addSubview(releaseDateTextView)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
+    override func setConstraints() {
+        backView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        posterImageView.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.7)
+        }
+        titleTextLabel.snp.makeConstraints { make in
+            make.top.equalTo(posterImageView.snp.bottom).offset(8)
+            make.leading.equalToSuperview().offset(8)
+        }
+        originalTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleTextLabel)
+            make.leading.equalTo(titleTextLabel.snp.trailing).offset(8)
+        }
+        ratingTextView.snp.makeConstraints { make in
+            make.top.equalTo(titleTextLabel.snp.bottom)
+            make.leading.equalTo(titleTextLabel)
+        }
+        releaseDateTextView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(8)
+            make.bottom.equalToSuperview().inset(32)
+        }
     }
     
 }
