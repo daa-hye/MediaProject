@@ -17,8 +17,8 @@
 		5326A5722A9C8F3F00A8BD4B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5326A5712A9C8F3F00A8BD4B /* BaseViewController.swift */; };
 		5326A5742A9C93B700A8BD4B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5326A5732A9C93B700A8BD4B /* BaseTableViewCell.swift */; };
 		5326A5CF2A9EAE9100A8BD4B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5326A5CE2A9EAE9100A8BD4B /* ProfileView.swift */; };
-		5326A5D12A9EB02100A8BD4B /* ProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5326A5D02A9EB02100A8BD4B /* ProfileInput.swift */; };
 		5326A5D32A9EB50C00A8BD4B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5326A5D22A9EB50C00A8BD4B /* ProfileViewController.swift */; };
+		5326A5D52A9EB9C800A8BD4B /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5326A5D42A9EB9C800A8BD4B /* ProfileTableViewCell.swift */; };
 		535DCA292A8724F6001D8299 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535DCA282A8724F6001D8299 /* AppDelegate.swift */; };
 		535DCA2B2A8724F6001D8299 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535DCA2A2A8724F6001D8299 /* SceneDelegate.swift */; };
 		535DCA2D2A8724F6001D8299 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535DCA2C2A8724F6001D8299 /* MovieViewController.swift */; };
@@ -69,8 +69,8 @@
 		5326A5712A9C8F3F00A8BD4B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		5326A5732A9C93B700A8BD4B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		5326A5CE2A9EAE9100A8BD4B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		5326A5D02A9EB02100A8BD4B /* ProfileInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInput.swift; sourceTree = "<group>"; };
 		5326A5D22A9EB50C00A8BD4B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		5326A5D42A9EB9C800A8BD4B /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		535DCA252A8724F6001D8299 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		535DCA282A8724F6001D8299 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		535DCA2A2A8724F6001D8299 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				5326A5CE2A9EAE9100A8BD4B /* ProfileView.swift */,
-				5326A5D02A9EB02100A8BD4B /* ProfileInput.swift */,
 				5326A5D22A9EB50C00A8BD4B /* ProfileViewController.swift */,
+				5326A5D42A9EB9C800A8BD4B /* ProfileTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -363,6 +363,7 @@
 				535DCA662A87B6BD001D8299 /* OverViewTableViewCell.swift in Sources */,
 				535DCA292A8724F6001D8299 /* AppDelegate.swift in Sources */,
 				5397B3FD2A8F632500EBAA6E /* VideoData.swift in Sources */,
+				5326A5D52A9EB9C800A8BD4B /* ProfileTableViewCell.swift in Sources */,
 				5397B3B62A8A4A5C00EBAA6E /* TrendingData.swift in Sources */,
 				5326A5072A98883C00A8BD4B /* OnboardingViewController.swift in Sources */,
 				5397B3F92A8F461500EBAA6E /* SimilarViewController.swift in Sources */,
@@ -386,7 +387,6 @@
 				535DCA4A2A873443001D8299 /* Movie.swift in Sources */,
 				535DCA582A8746F5001D8299 /* ViewIdentifierProtocol.swift in Sources */,
 				5397B3BB2A8C43B900EBAA6E /* CreditData.swift in Sources */,
-				5326A5D12A9EB02100A8BD4B /* ProfileInput.swift in Sources */,
 				5397B3F32A8E66E900EBAA6E /* TVSeasonsData.swift in Sources */,
 				535DCA4E2A87398C001D8299 /* MovieAPIManager.swift in Sources */,
 				5326A4E52A95DFC600A8BD4B /* MapViewController.swift in Sources */,
