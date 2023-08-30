@@ -9,6 +9,9 @@ import UIKit
 
 class DetailViewController: BaseViewController {
 
+    var delegate: PassDataDelegate?
+    var type: Setting?
+
     let profileTextField = {
         let view = UITextField()
         return view
@@ -16,6 +19,13 @@ class DetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        guard let text = profileTextField.text else { return }
+        delegate!.receiveDate(type: type!, data: text)
     }
 
     override func configureView() {
