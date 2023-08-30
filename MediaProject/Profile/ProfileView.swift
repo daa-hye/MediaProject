@@ -18,6 +18,7 @@ class ProfileView: BaseView {
     let tableView = {
         let view = UITableView()
         view.register(ProfileTableViewCell.self, forCellReuseIdentifier: "ProfileTableViewCell")
+        view.separatorColor = .clear
         return view
     }()
 
@@ -29,12 +30,13 @@ class ProfileView: BaseView {
     override func setConstraints() {
 
         profileImage.snp.makeConstraints { make in
-            make.center.top.equalTo(self.safeAreaLayoutGuide)
-            make.width.height.equalTo(50)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(16)
+            make.width.height.equalTo(100)
         }
 
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(profileImage.snp.bottom)
+            make.top.equalTo(profileImage.snp.bottom).offset(30)
             make.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
         }
 

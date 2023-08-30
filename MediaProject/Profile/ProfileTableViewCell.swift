@@ -18,6 +18,7 @@ class ProfileTableViewCell: BaseTableViewCell {
     let sublabel = {
         let view = UILabel()
         view.textAlignment = .left
+        view.textColor = .lightGray
         return view
     }()
 
@@ -35,8 +36,9 @@ class ProfileTableViewCell: BaseTableViewCell {
         }
 
         sublabel.snp.makeConstraints { make in
-            make.left.equalTo(label.snp.trailing).offset(16)
+            make.leading.equalTo(label.snp.trailing).offset(16)
             make.centerY.equalToSuperview()
         }
+
     }
 }
