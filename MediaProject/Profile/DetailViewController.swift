@@ -12,6 +12,8 @@ class DetailViewController: BaseViewController {
     var delegate: PassDataDelegate?
     var type: Setting?
 
+    var completionHandler: ((Setting, String) -> Void)?
+
     let profileTextField = {
         let view = UITextField()
         return view
@@ -25,7 +27,8 @@ class DetailViewController: BaseViewController {
         super.viewDidDisappear(animated)
 
         guard let text = profileTextField.text else { return }
-        delegate!.receiveDate(type: type!, data: text)
+        //delegate!.receiveDate(type: type!, data: text)
+        completionHandler?(type!, text)
     }
 
     override func configureView() {

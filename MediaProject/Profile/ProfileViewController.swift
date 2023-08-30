@@ -79,9 +79,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell") as? ProfileTableViewCell else { return }
         let vc = DetailViewController()
         vc.title = Setting(rawValue: indexPath.row)?.title
-        vc.delegate = self
+        //vc.delegate = self
         vc.profileTextField.placeholder = settingSubview[indexPath.row]
         vc.type = Setting(rawValue: indexPath.row)
+        vc.completionHandler = { type, data in
+            self.settingSubview[type.rawValue] = data
+            self.mainview.tableView.reloadRows(at: [IndexPath(row: type.rawValue, section: 0)], with: .automatic)
+        }
         navigationController?.pushViewController(vc, animated: true)
 
         tableView.reloadRows(at: [indexPath], with: .automatic)
