@@ -47,4 +47,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailViewController()
+        vc.title = setting[indexPath.row]
+        vc.profileTextField.placeholder = setting[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+
 }
