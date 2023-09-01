@@ -10,10 +10,10 @@ import Kingfisher
 
 class MovieViewController: BaseViewController {
 
-    let mainView = MovieView()
+    private let mainView = MovieView()
 
-    var movieList: [Movie] = []
-    var page = 1
+    private var movieList: [Movie] = []
+    private var page = 1
 
     override func loadView() {
         self.view = mainView
@@ -37,7 +37,7 @@ class MovieViewController: BaseViewController {
         mainView.movieListTableView.rowHeight = 400
     }
 
-    func getMovieList(_ page: Int) {
+    private func getMovieList(_ page: Int) {
 
         MovieAPIManager.shared.callRequest(page: page) { trendingData in
             for item in trendingData.results {

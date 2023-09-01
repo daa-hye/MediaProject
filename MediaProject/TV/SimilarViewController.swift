@@ -12,7 +12,7 @@ class SimilarViewController: UIViewController {
     @IBOutlet var similarSegControl: UISegmentedControl!
     @IBOutlet var stilCollectionView: UICollectionView!
 
-    enum Segment: Int {
+    private enum Segment: Int {
         case video
         case similar
 
@@ -26,8 +26,8 @@ class SimilarViewController: UIViewController {
         }
     }
 
-    var videoThumbnail:[String] = []
-    var similarPosters:[String] = []
+    private var videoThumbnail:[String] = []
+    private var similarPosters:[String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,16 +47,16 @@ class SimilarViewController: UIViewController {
 
     }
 
-    let group = DispatchGroup()
+    private let group = DispatchGroup()
 
-    func getVideoThumbnail(id: Int) {
+    private func getVideoThumbnail(id: Int) {
         TVAPIManager.shared.requestVideo(id: id) { url in
             self.videoThumbnail = url
             self.group.leave()
         }
     }
 
-    func getSimilar(id: Int) {
+    private func getSimilar(id: Int) {
         TVAPIManager.shared.requestSimilar(id: id) { posters in
             self.similarPosters = posters
             self.group.leave()
@@ -104,18 +104,18 @@ extension SimilarViewController: UICollectionViewDelegate, UICollectionViewDataS
 
 extension SimilarViewController {
 
-    func configureSeg() {
+    private func configureSeg() {
         similarSegControl.setTitle(Segment.video.segTitle, forSegmentAt: Segment.video.rawValue)
         similarSegControl.setTitle(Segment.similar.segTitle, forSegmentAt: Segment.similar.rawValue)
     }
 
-    func configureCollectionView() {
+    private func configureCollectionView() {
         stilCollectionView.delegate = self
         stilCollectionView.dataSource = self
         stilCollectionView.register(UINib(nibName: TVSeriesCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier:TVSeriesCollectionViewCell.identifier)
     }
 
-    func configureCollectionViewLayout() {
+    private func configureCollectionViewLayout() {
 
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 480, height: 360)

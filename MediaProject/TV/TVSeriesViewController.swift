@@ -12,8 +12,8 @@ class TVSeriesViewController: UIViewController {
 
     @IBOutlet var TVSeriesCollectionView: UICollectionView!
 
-    var seasonsCount = 0
-    var stils: [[String]] = []
+    private var seasonsCount = 0
+    private var stils: [[String]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class TVSeriesViewController: UIViewController {
 
     }
 
-    func getSeasonsCount(id: Int) {
+    private func getSeasonsCount(id: Int) {
 
         TVAPIManager.shared.request(id: id) { count in
             self.seasonsCount = count
@@ -36,7 +36,7 @@ class TVSeriesViewController: UIViewController {
         }
     }
 
-    func getSeasonsData(id: Int, season: Int) {
+    private func getSeasonsData(id: Int, season: Int) {
 
         var stilcut: [String] = []
 
@@ -84,14 +84,14 @@ extension TVSeriesViewController : UICollectionViewDelegate, UICollectionViewDat
 
 extension TVSeriesViewController {
 
-    func configureCollectionView() {
+    private func configureCollectionView() {
         TVSeriesCollectionView.delegate = self
         TVSeriesCollectionView.dataSource = self
         TVSeriesCollectionView.register(UINib(nibName: TVSeriesCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier:TVSeriesCollectionViewCell.identifier)
         TVSeriesCollectionView.register(UINib(nibName: TVSeasonsCollectionReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TVSeasonsCollectionReusableView.identifier)
     }
 
-    func configureCollectionViewLayout() {
+    private func configureCollectionViewLayout() {
 
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 300, height: 200)

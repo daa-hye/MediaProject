@@ -12,11 +12,11 @@ import SnapKit
 
 class MapViewController: UIViewController {
 
-    let theaterList = TheaterList().mapAnnotations
+    private let theaterList = TheaterList().mapAnnotations
 
-    let locationManager = CLLocationManager()
-    let mapView = MKMapView()
-    let selectTheaterButton: UIButton = {
+    private let locationManager = CLLocationManager()
+    private let mapView = MKMapView()
+    private let selectTheaterButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.text = "영화관 선택"
         button.backgroundColor = .darkGray
@@ -35,7 +35,7 @@ class MapViewController: UIViewController {
 
     }
 
-    func setAnnotation(theater: Theater) {
+    private func setAnnotation(theater: Theater) {
 
         let annotation = MKPointAnnotation()
         annotation.title = theater.location
@@ -45,12 +45,12 @@ class MapViewController: UIViewController {
 
     }
 
-    func setRegion(center: CLLocationCoordinate2D) {
+    private func setRegion(center: CLLocationCoordinate2D) {
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 200, longitudinalMeters: 200)
         mapView.setRegion(region, animated: true)
     }
 
-    func checkAppLocationAuth(status: CLAuthorizationStatus) {
+    private func checkAppLocationAuth(status: CLAuthorizationStatus) {
 
         switch status {
         case .notDetermined:
@@ -71,7 +71,7 @@ class MapViewController: UIViewController {
         }
     }
 
-    func checkDeviceLocationAuth() {
+    private func checkDeviceLocationAuth() {
 
         DispatchQueue.global().async {
 
@@ -120,7 +120,7 @@ extension MapViewController: CLLocationManagerDelegate {
 
 extension MapViewController {
 
-    func showAll() {
+    private func showAll() {
 
         if !mapView.annotations.isEmpty {
             mapView.removeAnnotations(mapView.annotations)
@@ -132,7 +132,7 @@ extension MapViewController {
 
     }
 
-    func showSelectedTheater(type: String) {
+    private func showSelectedTheater(type: String) {
 
         mapView.removeAnnotations(mapView.annotations)
 
@@ -142,7 +142,7 @@ extension MapViewController {
         }
     }
 
-    @objc func selectTheaterButtonDidTap() {
+    @objc private func selectTheaterButtonDidTap() {
 
         let selectTheaterActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let mega = UIAlertAction(title: "메가박스", style: .default) { alert in
@@ -167,7 +167,7 @@ extension MapViewController {
 
     }
 
-    func setUI() {
+    private func setUI() {
 
         view.addSubview(mapView)
         mapView.snp.makeConstraints { make in
@@ -188,7 +188,7 @@ extension MapViewController {
      Location Authorization Custom Alert
      */
 
-    func showRequestLocationServiceAlert() {
+    private func showRequestLocationServiceAlert() {
 
       let requestLocationServiceAlert = UIAlertController(title: "위치정보 이용", message: "위치 서비스를 사용할 수 없습니다. 기기의 '설정>개인정보 보호'에서 위치 서비스를 켜주세요.", preferredStyle: .alert)
 

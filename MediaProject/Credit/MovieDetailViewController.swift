@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-enum tableViewSection: String, CaseIterable {
+fileprivate enum tableViewSection: String, CaseIterable {
     case overview
     case cast
     case crew
@@ -21,10 +21,10 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var backDropImageView: UIImageView!
 
-    let sections = tableViewSection.allCases
+    fileprivate let sections = tableViewSection.allCases
 
-    var castList: [Casting] = []
-    var crewList: [Crew] = []
+    private var castList: [Casting] = []
+    private var crewList: [Crew] = []
 
     var movie: Movie?
     
@@ -41,7 +41,7 @@ class MovieDetailViewController: UIViewController {
         getMovieDetail()
     }
 
-    func getMovieDetail() {
+    private func getMovieDetail() {
         guard let movieID = movie?.id else { return }
         MovieAPIManager.shared.callRequest(movieID: movieID) { creditData in
             let casting = creditData.cast
@@ -67,7 +67,7 @@ class MovieDetailViewController: UIViewController {
         }
     }
 
-    func setUI() {
+    private func setUI() {
 
         title = "출연/제작"
 

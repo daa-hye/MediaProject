@@ -10,7 +10,7 @@ import SnapKit
 
 class OnboardingViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
-    var list: [UIViewController] = []
+    fileprivate var list: [UIViewController] = []
 
     override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
@@ -51,7 +51,7 @@ class OnboardingViewController: UIPageViewController, UIPageViewControllerDelega
 
 }
 
-class FirstOnboardingViewController: UIViewController {
+private class FirstOnboardingViewController: UIViewController {
 
     let mainLabel = {
         let label = UILabel()
@@ -76,7 +76,7 @@ class FirstOnboardingViewController: UIViewController {
 
 }
 
-class SecondOnboardingViewController: UIViewController {
+private class SecondOnboardingViewController: UIViewController {
 
     let mainLabel = {
         let label = UILabel()
@@ -103,9 +103,9 @@ class SecondOnboardingViewController: UIViewController {
 
 }
 
-class ThirdOnboardingViewController: UIViewController {
+private class ThirdOnboardingViewController: UIViewController {
 
-    let startButton = {
+    private let startButton = {
         let button = UIButton()
         button.setTitle("시작하기", for: .normal)
         button.backgroundColor = .systemPink
@@ -121,7 +121,7 @@ class ThirdOnboardingViewController: UIViewController {
     }
 
 
-    @objc func startButtonDidTap() {
+    @objc private func startButtonDidTap() {
 
         UserDefaults.standard.setValue(true, forKey: "isNotFirstRunnig")
 
@@ -134,14 +134,14 @@ class ThirdOnboardingViewController: UIViewController {
         sceneDelegate?.window?.makeKeyAndVisible()
     }
 
-    func setLayout() {
+    private func setLayout() {
         startButton.snp.makeConstraints { make in
             make.height.equalTo(50)
             make.bottom.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
     }
 
-    func setConfiguration() {
+    private func setConfiguration() {
         startButton.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
     }
 }
