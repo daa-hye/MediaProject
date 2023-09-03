@@ -25,14 +25,7 @@ extension UITableViewCell: ViewIdentifierProtocol {
     }
 }
 
-extension UICollectionViewCell: ViewIdentifierProtocol {
-
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
-extension TVSeasonsCollectionReusableView: ViewIdentifierProtocol {
+extension UICollectionReusableView: ViewIdentifierProtocol {
 
     static var identifier: String {
         return String(describing: self)
