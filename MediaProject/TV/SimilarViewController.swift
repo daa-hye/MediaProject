@@ -9,8 +9,9 @@ import UIKit
 
 class SimilarViewController: BaseViewController {
 
-    private var videoThumbnail:[String] = []
-    private var similarPosters:[String] = []
+    private var videoThumbnail: [String] = []
+    private var videoURL: [String] = []
+    private var similarPosters: [String] = []
 
     private let mainView = SimilarView()
 
@@ -22,9 +23,9 @@ class SimilarViewController: BaseViewController {
         super.viewDidLoad()
 
         group.enter()
-        getVideoThumbnail(id: 95479)
+        getVideoThumbnail(id: 66732)
         group.enter()
-        getSimilar(id: 95479)
+        getSimilar(id: 66732)
 
         group.notify(queue: .main) {
             self.mainView.stilCollectionView.reloadData()
@@ -46,8 +47,9 @@ class SimilarViewController: BaseViewController {
     private let group = DispatchGroup()
 
     private func getVideoThumbnail(id: Int) {
-        TVAPIManager.shared.requestVideo(id: id) { url in
-            self.videoThumbnail = url
+        TVAPIManager.shared.requestVideo(id: id) { thumbnail, url in
+            self.videoThumbnail = thumbnail
+            self.videoURL = url
             self.group.leave()
         }
     }
@@ -80,13 +82,22 @@ extension SimilarViewController: UICollectionViewDelegate, UICollectionViewDataS
 
         if mainView.similarSegControl.selectedSegmentIndex == Segment.video.rawValue {
             cell.stillImageView.kf.setImage(with: URL(string: videoThumbnail[indexPath.item]))
-            print(videoThumbnail[indexPath.item])
         } else if mainView.similarSegControl.selectedSegmentIndex == Segment.similar.rawValue {
             let url = URL.makeImageURL(similarPosters[indexPath.item])
             cell.stillImageView.kf.setImage(with: url)
         } else { return UICollectionViewCell() }
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard mainView.similarSegControl.selectedSegmentIndex == Segment.video.rawValue else {
+            mainView.stilCollectionView.reloadItems(at: [indexPath])
+            return
+        }
+        let vc = VideoWebViewController()
+        vc.link = URL(string: videoURL[indexPath.item])
+        present(vc, animated: true)
     }
 
 }

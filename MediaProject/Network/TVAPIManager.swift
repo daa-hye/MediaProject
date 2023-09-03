@@ -63,10 +63,11 @@ class TVAPIManager {
         })
     }
 
-    func requestVideo(id: Int, completionHandler: @escaping ([String]) -> Void) {
+    func requestVideo(id: Int, completionHandler: @escaping ([String], [String]) -> Void) {
 
         let url = "https://api.themoviedb.org/3/tv/\(id)/videos?api_key=\(APIKey.tmdb)"
         var thumbnails: [String] = []
+        var links: [String] = []
 
         AF.request(url, method: .get)
             .validate()
@@ -76,11 +77,11 @@ class TVAPIManager {
                     let results = value.results
                     for item in results {
                         if item.site == "YouTube" {
-                            let url = "https://img.youtube.com/vi/\(item.key)/mqdefault.jpg"
-                            thumbnails.append(url)
+                            thumbnails.append("https://img.youtube.com/vi/\(item.key)/mqdefault.jpg")
+                            links.append("https://www.youtube.com/watch?v=\(item.key)")
                         }
                     }
-                    completionHandler(thumbnails)
+                    completionHandler(thumbnails, links)
                 case .failure(let error):
                     print(error)
                 }
