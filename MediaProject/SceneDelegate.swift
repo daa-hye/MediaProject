@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let vc = OnboardingViewController()
             window?.rootViewController = vc
         } else {
-            let vc = ProfileViewController()
+            let vc = SimilarViewController()
             window?.rootViewController = UINavigationController(rootViewController: vc)
         }
 

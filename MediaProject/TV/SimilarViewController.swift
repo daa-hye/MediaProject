@@ -27,7 +27,7 @@ class SimilarViewController: BaseViewController {
         getSimilar(id: 95479)
 
         group.notify(queue: .main) {
-            //mainView.similarPosters = similarPosters
+            self.mainView.stilCollectionView.reloadData()
         }
     }
 
@@ -36,6 +36,11 @@ class SimilarViewController: BaseViewController {
 
         mainView.stilCollectionView.delegate = self
         mainView.stilCollectionView.dataSource = self
+        mainView.similarSegControl.addTarget(self, action: #selector(segValueChanged), for: .valueChanged)
+    }
+
+    @objc private func segValueChanged() {
+        mainView.stilCollectionView.reloadData()
     }
 
     private let group = DispatchGroup()
@@ -74,9 +79,10 @@ extension SimilarViewController: UICollectionViewDelegate, UICollectionViewDataS
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TVSeriesCollectionViewCell.identifier, for: indexPath) as? TVSeriesCollectionViewCell else { return UICollectionViewCell() }
 
         if mainView.similarSegControl.selectedSegmentIndex == Segment.video.rawValue {
-            cell.stillImageView.kf.setImage(with: URL(string: videoThumbnail[indexPath.row]))
+            cell.stillImageView.kf.setImage(with: URL(string: videoThumbnail[indexPath.item]))
+            print(videoThumbnail[indexPath.item])
         } else if mainView.similarSegControl.selectedSegmentIndex == Segment.similar.rawValue {
-            let url = URL.makeImageURL(similarPosters[indexPath.row])
+            let url = URL.makeImageURL(similarPosters[indexPath.item])
             cell.stillImageView.kf.setImage(with: url)
         } else { return UICollectionViewCell() }
 

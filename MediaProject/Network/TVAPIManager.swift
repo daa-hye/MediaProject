@@ -35,7 +35,7 @@ class TVAPIManager {
 
         AF.request(url, method: .get).validate().responseDecodable(of: TVSeasonsData.self, completionHandler: { response in
             switch response.result {
-            case .success(let value):89
+            case .success(let value):
                 completionHandler(value.episodes ?? nil)
             case .failure(let error):
                 print(error)
@@ -80,7 +80,6 @@ class TVAPIManager {
                             thumbnails.append(url)
                         }
                     }
-                    print("completion call")
                     completionHandler(thumbnails)
                 case .failure(let error):
                     print(error)

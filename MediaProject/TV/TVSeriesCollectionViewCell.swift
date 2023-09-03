@@ -7,13 +7,22 @@
 
 import UIKit
 
-class TVSeriesCollectionViewCell: UICollectionViewCell {
-
-    @IBOutlet var stillImageView: UIImageView!
+class TVSeriesCollectionViewCell: BaseCollectionViewCell {
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    let stillImageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+
+    override func configureView() {
+        addSubview(stillImageView)
+    }
+
+    override func setConstraints() {
+        stillImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 
 }

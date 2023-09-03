@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7ZB-KB-Bq4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
@@ -54,77 +54,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131" y="-27"/>
-        </scene>
-        <!--Similar View Controller-->
-        <scene sceneID="hrI-vz-7Gh">
-            <objects>
-                <viewController storyboardIdentifier="SimilarViewController" id="7ZB-KB-Bq4" customClass="SimilarViewController" customModule="MediaProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5Wd-Qu-2Qg">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdJ-xY-0hE">
-                                <rect key="frame" x="0.0" y="59" width="393" height="60"/>
-                                <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="org-VL-VZd">
-                                        <rect key="frame" x="131" y="14.666666666666671" width="131" height="32"/>
-                                        <segments>
-                                            <segment title="First"/>
-                                            <segment title="Second"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="segmentValueChanged:" destination="7ZB-KB-Bq4" eventType="valueChanged" id="W71-Mh-uLu"/>
-                                        </connections>
-                                    </segmentedControl>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="FMQ-vK-WZT"/>
-                                    <constraint firstItem="org-VL-VZd" firstAttribute="centerY" secondItem="qdJ-xY-0hE" secondAttribute="centerY" id="NMO-EP-4fq"/>
-                                    <constraint firstItem="org-VL-VZd" firstAttribute="centerX" secondItem="qdJ-xY-0hE" secondAttribute="centerX" id="cuJ-Gg-T01"/>
-                                </constraints>
-                            </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="R4w-GX-f0U">
-                                <rect key="frame" x="0.0" y="119" width="393" height="699"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UXK-oX-J8E">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="AVl-zh-1DK">
-                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2LV-Sa-J7E">
-                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="MnF-dg-YEt"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="MnF-dg-YEt" firstAttribute="bottom" secondItem="R4w-GX-f0U" secondAttribute="bottom" id="0Jq-Bh-LgK"/>
-                            <constraint firstItem="qdJ-xY-0hE" firstAttribute="top" secondItem="MnF-dg-YEt" secondAttribute="top" id="7Br-oG-Asj"/>
-                            <constraint firstItem="MnF-dg-YEt" firstAttribute="trailing" secondItem="R4w-GX-f0U" secondAttribute="trailing" id="Ek7-df-X6i"/>
-                            <constraint firstItem="R4w-GX-f0U" firstAttribute="leading" secondItem="MnF-dg-YEt" secondAttribute="leading" id="IJY-6H-NN0"/>
-                            <constraint firstItem="R4w-GX-f0U" firstAttribute="top" secondItem="qdJ-xY-0hE" secondAttribute="bottom" id="ZWq-mm-Rym"/>
-                            <constraint firstItem="qdJ-xY-0hE" firstAttribute="leading" secondItem="MnF-dg-YEt" secondAttribute="leading" id="a4Q-Rc-Ugu"/>
-                            <constraint firstItem="MnF-dg-YEt" firstAttribute="trailing" secondItem="qdJ-xY-0hE" secondAttribute="trailing" id="yc6-oq-XEZ"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="similarSegControl" destination="org-VL-VZd" id="sar-MC-35y"/>
-                        <outlet property="stilCollectionView" destination="R4w-GX-f0U" id="nqx-9r-MZy"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D7w-jf-7Wn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1141.2213740458014" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <resources>

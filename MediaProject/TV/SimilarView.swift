@@ -10,20 +10,24 @@ import WebKit
 
 class SimilarView: BaseView {
 
-    let similarSegControl = UISegmentedControl()
-    let stilCollectionView = UICollectionView()
-
-    var videoThumbnail:[String] = []
-    var similarPosters:[String] = []
+    let similarSegControl: UISegmentedControl = {
+        let control = UISegmentedControl(items: [Segment.video.segTitle, Segment.similar.segTitle])
+        control.translatesAutoresizingMaskIntoConstraints = false
+        return control
+      }()
+    
+    lazy var stilCollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
+        view.register(TVSeriesCollectionViewCell.self, forCellWithReuseIdentifier: TVSeriesCollectionViewCell.identifier)
+        return view
+    }()
     
     override func configureView() {
         addSubview(similarSegControl)
         addSubview(stilCollectionView)
 
-        configureCollectionViewLayout()
         configureSeg()
 
-        //similarSegControl.addTarget(self, action: #selector(segValueChanged), for: .valueChanged)
     }
 
     override func setConstraints() {
@@ -33,7 +37,7 @@ class SimilarView: BaseView {
         }
         stilCollectionView.snp.makeConstraints {
             $0.top.equalTo(similarSegControl.snp.bottom)
-            $0.horizontalEdges.equalToSuperview()
+            $0.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
     
@@ -41,24 +45,19 @@ class SimilarView: BaseView {
 
 extension SimilarView {
 
-    @objc private func segValueChanged() {
-        stilCollectionView.reloadData()
-    }
-
     private func configureSeg() {
-        similarSegControl.setTitle(Segment.video.segTitle, forSegmentAt: Segment.video.rawValue)
-        similarSegControl.setTitle(Segment.similar.segTitle, forSegmentAt: Segment.similar.rawValue)
+        similarSegControl.selectedSegmentIndex = 0
     }
 
-    private func configureCollectionViewLayout() {
+    private func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
 
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 480, height: 360)
+        layout.itemSize = CGSize(width: 300, height: 300)
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 8
         layout.scrollDirection = .vertical
 
-        stilCollectionView.collectionViewLayout = layout
+        return layout
     }
     
 }
