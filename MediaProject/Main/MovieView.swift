@@ -20,8 +20,8 @@ class MovieView: BaseView {
     }
 
     override func setConstraints() {
-        movieListTableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        movieListTableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
     

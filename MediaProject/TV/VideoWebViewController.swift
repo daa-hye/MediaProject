@@ -27,7 +27,7 @@ class VideoWebViewController: BaseViewController {
     }
 
     override func setConstraints() {
-        webView.snp.makeConstraints { $0
+        webView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
     }

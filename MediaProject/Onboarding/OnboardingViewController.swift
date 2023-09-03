@@ -135,9 +135,9 @@ private class ThirdOnboardingViewController: UIViewController {
     }
 
     private func setLayout() {
-        startButton.snp.makeConstraints { make in
-            make.height.equalTo(50)
-            make.bottom.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
+        startButton.snp.makeConstraints {
+            $0.height.equalTo(50)
+            $0.bottom.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
     }
 

@@ -59,28 +59,28 @@ class MovieTableViewCell: BaseTableViewCell {
     }
 
     override func setConstraints() {
-        backView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        backView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
-        posterImageView.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.7)
+        posterImageView.snp.makeConstraints {
+            $0.top.horizontalEdges.equalToSuperview()
+            $0.height.equalToSuperview().multipliedBy(0.7)
         }
-        titleTextLabel.snp.makeConstraints { make in
-            make.top.equalTo(posterImageView.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(8)
+        titleTextLabel.snp.makeConstraints {
+            $0.top.equalTo(posterImageView.snp.bottom).offset(8)
+            $0.leading.equalToSuperview().offset(8)
         }
-        originalTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleTextLabel)
-            make.leading.equalTo(titleTextLabel.snp.trailing).offset(8)
+        originalTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(titleTextLabel)
+            $0.leading.equalTo(titleTextLabel.snp.trailing).offset(8)
         }
-        ratingTextView.snp.makeConstraints { make in
-            make.top.equalTo(titleTextLabel.snp.bottom)
-            make.leading.equalTo(titleTextLabel)
+        ratingTextView.snp.makeConstraints {
+            $0.top.equalTo(titleTextLabel.snp.bottom)
+            $0.leading.equalTo(titleTextLabel)
         }
-        releaseDateTextView.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(8)
-            make.bottom.equalToSuperview().inset(32)
+        releaseDateTextView.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(8)
+            $0.bottom.equalToSuperview().inset(32)
         }
     }
     

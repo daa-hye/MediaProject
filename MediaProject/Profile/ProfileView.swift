@@ -29,15 +29,15 @@ class ProfileView: BaseView {
 
     override func setConstraints() {
 
-        profileImage.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(16)
-            make.width.height.equalTo(100)
+        profileImage.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(16)
+            $0.width.height.equalTo(100)
         }
 
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(profileImage.snp.bottom).offset(30)
-            make.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(profileImage.snp.bottom).offset(30)
+            $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
         }
 
     }

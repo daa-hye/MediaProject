@@ -27,11 +27,11 @@ class TVSeriesViewController: UIViewController {
 
     private func getSeasonsCount(id: Int) {
 
-        TVAPIManager.shared.request(id: id) { count in
-            self.seasonsCount = count
+        TVAPIManager.shared.request(id: id) { [weak self] count in
+            self?.seasonsCount = count
 
             for i in 0..<count {
-                self.getSeasonsData(id: id, season: i)
+                self?.getSeasonsData(id: id, season: i)
             }
         }
     }
@@ -40,13 +40,13 @@ class TVSeriesViewController: UIViewController {
 
         var stilcut: [String] = []
 
-        TVAPIManager.shared.request(id: id, season: season) { episodes in
+        TVAPIManager.shared.request(id: id, season: season) { [weak self] episodes in
             guard let episodes = episodes else { return }
             for episode in episodes {
                 stilcut.append(episode.stillPath)
             }
-            self.stils.append(stilcut)
-            self.TVSeriesCollectionView.reloadData()
+            self?.stils.append(stilcut)
+            self?.TVSeriesCollectionView.reloadData()
         }
     }
 

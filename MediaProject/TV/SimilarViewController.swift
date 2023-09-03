@@ -47,17 +47,17 @@ class SimilarViewController: BaseViewController {
     private let group = DispatchGroup()
 
     private func getVideoThumbnail(id: Int) {
-        TVAPIManager.shared.requestVideo(id: id) { thumbnail, url in
-            self.videoThumbnail = thumbnail
-            self.videoURL = url
-            self.group.leave()
+        TVAPIManager.shared.requestVideo(id: id) { [weak self] thumbnail, url in
+            self?.videoThumbnail = thumbnail
+            self?.videoURL = url
+            self?.group.leave()
         }
     }
 
     private func getSimilar(id: Int) {
-        TVAPIManager.shared.requestSimilar(id: id) { posters in
-            self.similarPosters = posters
-            self.group.leave()
+        TVAPIManager.shared.requestSimilar(id: id) { [weak self] posters in
+            self?.similarPosters = posters
+            self?.group.leave()
         }
     }
 

@@ -9,7 +9,7 @@ import UIKit
 
 class DetailViewController: BaseViewController {
 
-    var delegate: PassDataDelegate?
+    weak var delegate: PassDataDelegate?
     var type: Setting?
 
     var completionHandler: ((Setting, String) -> Void)?
@@ -37,8 +37,8 @@ class DetailViewController: BaseViewController {
     }
 
     override func setConstraints() {
-        profileTextField.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide).offset(16)
+        profileTextField.snp.makeConstraints {
+            $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide).offset(16)
         }
     }
     

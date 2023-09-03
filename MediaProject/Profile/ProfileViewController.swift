@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol PassDataDelegate {
+protocol PassDataDelegate: AnyObject {
     func receiveDate(type: Setting, data: String)
 }
 
@@ -37,8 +37,8 @@ enum Setting: Int, CaseIterable {
 
 class ProfileViewController: BaseViewController {
 
-    let mainview = ProfileView()
-    var settingSubview = Setting.allCases.map{"\($0)"}
+    private let mainview = ProfileView()
+    private var settingSubview = Setting.allCases.map{"\($0)"}
 
     override func loadView() {
         self.view = mainview
@@ -82,9 +82,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         //vc.delegate = self
         vc.profileTextField.placeholder = settingSubview[indexPath.row]
         vc.type = Setting(rawValue: indexPath.row)
-        vc.completionHandler = { type, data in
-            self.settingSubview[type.rawValue] = data
-            self.mainview.tableView.reloadRows(at: [IndexPath(row: type.rawValue, section: 0)], with: .automatic)
+        vc.completionHandler = { [weak self] type, data in
+            self?.settingSubview[type.rawValue] = data
+            self?.mainview.tableView.reloadRows(at: [IndexPath(row: type.rawValue, section: 0)], with: .automatic)
         }
         navigationController?.pushViewController(vc, animated: true)
 

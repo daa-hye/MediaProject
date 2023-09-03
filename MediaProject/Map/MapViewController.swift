@@ -170,16 +170,16 @@ extension MapViewController {
     private func setUI() {
 
         view.addSubview(mapView)
-        mapView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(16)
+        mapView.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(16)
         }
 
         view.addSubview(selectTheaterButton)
-        selectTheaterButton.snp.makeConstraints { make in
-            make.width.equalTo(100)
-            make.height.equalTo(30)
-            make.trailing.equalTo(view).offset(-20)
-            make.top.equalTo(view.safeAreaLayoutGuide)
+        selectTheaterButton.snp.makeConstraints {
+            $0.width.equalTo(100)
+            $0.height.equalTo(30)
+            $0.trailing.equalTo(view).offset(-20)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
         }
         selectTheaterButton.addTarget(self, action: #selector(selectTheaterButtonDidTap), for: .touchUpInside)
     }

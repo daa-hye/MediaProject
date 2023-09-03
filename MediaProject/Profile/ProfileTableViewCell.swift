@@ -29,15 +29,15 @@ class ProfileTableViewCell: BaseTableViewCell {
 
     override func setConstraints() {
 
-        label.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(16)
-            make.centerY.equalToSuperview()
-            make.width.equalTo(100)
+        label.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(16)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(100)
         }
 
-        sublabel.snp.makeConstraints { make in
-            make.leading.equalTo(label.snp.trailing).offset(16)
-            make.centerY.equalToSuperview()
+        sublabel.snp.makeConstraints {
+            $0.leading.equalTo(label.snp.trailing).offset(16)
+            $0.centerY.equalToSuperview()
         }
 
     }
