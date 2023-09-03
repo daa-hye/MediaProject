@@ -34,7 +34,7 @@ class VideoWebViewController: BaseViewController {
 
 }
 
-extension VideoWebViewController: UIWebViewDelegate {
+extension VideoWebViewController: WKUIDelegate {
 
     func reloadButtonClicked() {
         webView.reload()
