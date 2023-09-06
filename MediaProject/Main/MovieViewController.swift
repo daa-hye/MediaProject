@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class MovieViewController: BaseViewController {
+final class MovieViewController: BaseViewController {
 
     private let mainView = MovieView()
 

@@ -35,7 +35,7 @@ enum Setting: Int, CaseIterable {
 
 }
 
-class ProfileViewController: BaseViewController {
+final class ProfileViewController: BaseViewController {
 
     private let mainview = ProfileView()
     private var settingSubview = Setting.allCases.map{"\($0)"}

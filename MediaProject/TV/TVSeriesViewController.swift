@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class TVSeriesViewController: UIViewController {
+final class TVSeriesViewController: UIViewController {
 
     @IBOutlet var TVSeriesCollectionView: UICollectionView!
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: BaseViewController {
+final class DetailViewController: BaseViewController {
 
     weak var delegate: PassDataDelegate?
     var type: Setting?

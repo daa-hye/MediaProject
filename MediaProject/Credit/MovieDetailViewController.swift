@@ -14,7 +14,7 @@ fileprivate enum tableViewSection: String, CaseIterable {
     case crew
 }
 
-class MovieDetailViewController: UIViewController {
+final class MovieDetailViewController: UIViewController {
 
     @IBOutlet var creditTableView: UITableView!
     @IBOutlet var movieTitleTextView: UILabel!

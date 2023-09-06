@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class SimilarView: BaseView {
+final class SimilarView: BaseView {
 
     let similarSegControl: UISegmentedControl = {
         let control = UISegmentedControl(items: [Segment.video.segTitle, Segment.similar.segTitle])

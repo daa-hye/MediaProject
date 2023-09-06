@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 import SnapKit
 
-class MapViewController: UIViewController {
+final class MapViewController: UIViewController {
 
     private let theaterList = TheaterList().mapAnnotations
 

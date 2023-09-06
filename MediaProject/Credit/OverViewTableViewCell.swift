@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OverViewTableViewCell: UITableViewCell {
+final class OverViewTableViewCell: UITableViewCell {
 
     @IBOutlet var contentTextLabel: UILabel!
 

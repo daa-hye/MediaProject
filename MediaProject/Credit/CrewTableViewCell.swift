@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CrewTableViewCell: UITableViewCell {
+final class CrewTableViewCell: UITableViewCell {
 
     @IBOutlet var nameTextLabel: UILabel!
     @IBOutlet var jobTextLabel: UILabel!

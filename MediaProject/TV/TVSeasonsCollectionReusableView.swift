@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TVSeasonsCollectionReusableView: UICollectionReusableView {
+final class TVSeasonsCollectionReusableView: UICollectionReusableView {
 
     @IBOutlet var seasonLabel: UILabel!
     

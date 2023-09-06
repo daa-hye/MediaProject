@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieView: BaseView {
+final class MovieView: BaseView {
 
     let movieListTableView = {
         let view = UITableView()

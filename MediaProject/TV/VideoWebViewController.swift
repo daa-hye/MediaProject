@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class VideoWebViewController: BaseViewController {
+final class VideoWebViewController: BaseViewController {
 
     let webView = WKWebView()
     var link: URL?

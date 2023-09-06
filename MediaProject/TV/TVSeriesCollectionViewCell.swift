@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TVSeriesCollectionViewCell: BaseCollectionViewCell {
+final class TVSeriesCollectionViewCell: BaseCollectionViewCell {
     
     let stillImageView: UIImageView = {
         let view = UIImageView()

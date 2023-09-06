@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SimilarViewController: BaseViewController {
+final class SimilarViewController: BaseViewController {
 
     private var videoThumbnail: [String] = []
     private var videoURL: [String] = []

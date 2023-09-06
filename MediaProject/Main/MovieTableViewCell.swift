@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieTableViewCell: BaseTableViewCell {
+final class MovieTableViewCell: BaseTableViewCell {
 
     let backView = {
         let view = UIView()
